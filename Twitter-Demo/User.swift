@@ -10,10 +10,10 @@ import UIKit
 
 class User: NSObject {
 
-    var name: NSString?
-    var screenname: NSString?
+    var name: String?
+    var screenname: String?
     var profileUrl: NSURL?
-    var tagline: NSString?
+    var tagline: String?
     
     var dictionary: NSDictionary?
     static let userDidLogoutNotification = "UserDidLogout"
