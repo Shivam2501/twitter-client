@@ -8,23 +8,23 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController {
+class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var tweets: [Tweet]!
+    var tweets: [Tweet]?
     
+    @IBOutlet var tweetTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        TwitterClient.sharedInstance.homeTimeline({ (tweets: [Tweet]) -> () in
-            self.tweets = tweets
-            
-            for tweet in tweets{
-                print("Tweet text: \(tweet.text)")
-            }
-            
-            }, failure: { (error: NSError) -> () in
-                print(error.localizedDescription)
-        })
         
+        tweetTable.dataSource = self
+        tweetTable.delegate = self
+        tweetTable.rowHeight = UITableViewAutomaticDimension
+        tweetTable.estimatedRowHeight = 120
+        
+        TwitterClient.sharedInstance.homeTimeline(nil, completion: { (tweets, error) -> () in
+            self.tweets = tweets
+            self.tweetTable.reloadData()
+        })
         // Do any additional setup after loading the view.
     }
 
@@ -37,6 +37,22 @@ class TweetsViewController: UIViewController {
         TwitterClient.sharedInstance.logout()
     }
 
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tweets != nil{
+            return tweets!.count
+        }else{
+            return 0
+        }
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tweetTable.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! TweetCell
+        cell.selectionStyle = .None
+        //cell.tweet = tweets![indexPath.row]
+        return cell
+    }
+    
+    
     /*
     // MARK: - Navigation
 

@@ -11,8 +11,6 @@ import BDBOAuth1Manager
 
 class TwitterClient: BDBOAuth1SessionManager {
     
-    
-    
     static let sharedInstance = TwitterClient(baseURL: NSURL(string: "https://api.twitter.com"), consumerKey: "OFjgPhvR81GVuyu0r9JyCSgMR", consumerSecret: "Seef1D3R24oKl4TsG3iHdMYevrnMPgcvtptnTggOix8xdDYDgU")
     
     var loginSuccess: (()->())?
@@ -74,14 +72,14 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
-    func homeTimeline(success: ([Tweet]) -> (), failure: (NSError) -> () ){
+    func homeTimeline(params: NSDictionary?, completion: (tweets: [Tweet]?, error: NSError?) -> ()) {
         GET("1.1/statuses/home_timeline.json", parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
                 let dictionaries = response as! [NSDictionary]
             
                 let tweets = Tweet.tweetsWithArray(dictionaries)
-                success(tweets)
+                completion(tweets: tweets, error: nil)
             }, failure: { (task: NSURLSessionDataTask?, error: NSError) -> Void in
-                failure(error)
+                completion(tweets: nil, error: error)
         })
     }
 }
