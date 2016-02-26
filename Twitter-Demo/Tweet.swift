@@ -22,7 +22,7 @@ class Tweet: NSObject {
         user = User(dictionary: (dictionary["user"] as? NSDictionary)!)
         
         retweet_count = (dictionary["retweet_count"] as? Int) ?? 0
-        favourites_count = (dictionary["favourties_count"] as? Int) ?? 0
+        favourites_count = (dictionary["favorite_count"] as? Int) ?? 0
         id = dictionary["id"] as? Int
         
         let timestampString = dictionary["created_at"] as? String

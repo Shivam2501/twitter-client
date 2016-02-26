@@ -84,6 +84,15 @@ class TweetCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        profileImage.layer.cornerRadius = 3
+        profileImage.clipsToBounds = true
+        
+        username.preferredMaxLayoutWidth = username.frame.size.width
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        username.preferredMaxLayoutWidth = username.frame.size.width
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
