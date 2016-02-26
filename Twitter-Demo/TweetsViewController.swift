@@ -102,6 +102,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         
         let tweetdetailviewcontroller = segue.destinationViewController as! TweetDetailViewController
         tweetdetailviewcontroller.tweet = tweet
+      
     }
     
 

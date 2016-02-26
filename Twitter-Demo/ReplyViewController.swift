@@ -25,6 +25,7 @@ class ReplyViewController: UIViewController {
             self.profile_image.setImageWithURL(user.profileUrl!)
             self.username.text = user.name
             self.screenname.text = "@\(user.screenname!)"
+            self.tweet_field.text = "@\(self.tweet!.user!.screenname!)"
             }) { (error: NSError) -> () in
             print("Error fetching the user")
         }
@@ -37,7 +38,7 @@ class ReplyViewController: UIViewController {
     }
     
     @IBAction func post_tweet(sender: AnyObject) {
-        let address = "@\(tweet!.user!.screenname!) \(self.tweet_field.text!)"
+        let address = "\(self.tweet_field.text!)"
         let escapedAddress = address.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
         TwitterClient.sharedInstance.reply(["tweet": escapedAddress!, "id": tweet!.id!]) { (tweet, error) -> () in
         print("Tweeted")
