@@ -87,8 +87,8 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fav" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8U-xf-IhS">
-                                            <rect key="frame" x="206" y="54" width="22.5" height="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Fav" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8U-xf-IhS">
+                                            <rect key="frame" x="206" y="57" width="22.5" height="17"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -127,8 +127,8 @@
                                                 <action selector="favouriteAction:" destination="1Lt-12-cYa" eventType="touchUpInside" id="5Yj-PK-rpa"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Re" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LeU-6D-Tex">
-                                            <rect key="frame" x="144" y="54" width="17" height="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Re" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LeU-6D-Tex">
+                                            <rect key="frame" x="144" y="57" width="17" height="17"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -141,9 +141,10 @@
                                         <constraint firstItem="PdM-Vg-80k" firstAttribute="top" secondItem="FpQ-CU-f06" secondAttribute="top" constant="8" id="6zS-C6-fRh"/>
                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="RBj-Y0-3x6" secondAttribute="bottom" constant="12" id="8pV-td-Kg0"/>
                                         <constraint firstItem="TRO-mK-o3M" firstAttribute="top" secondItem="0vC-Mi-1Kk" secondAttribute="bottom" constant="3" id="9Po-32-elK"/>
-                                        <constraint firstAttribute="trailing" secondItem="0vC-Mi-1Kk" secondAttribute="trailing" constant="8" id="9WZ-NX-N7k"/>
+                                        <constraint firstAttribute="trailing" secondItem="0vC-Mi-1Kk" secondAttribute="trailing" constant="6" id="9WZ-NX-N7k"/>
                                         <constraint firstItem="Da9-gA-9UC" firstAttribute="top" secondItem="FpQ-CU-f06" secondAttribute="top" constant="8" id="CDa-iB-dAD"/>
                                         <constraint firstItem="2ZK-Da-iCG" firstAttribute="leading" secondItem="LeU-6D-Tex" secondAttribute="trailing" constant="14" id="D7X-Pe-F8c"/>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="TRO-mK-o3M" secondAttribute="bottom" constant="12" id="Dgl-KE-RcR"/>
                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="J8U-xf-IhS" secondAttribute="bottom" constant="12" id="Flp-31-OWR"/>
                                         <constraint firstItem="RBj-Y0-3x6" firstAttribute="leading" secondItem="FpQ-CU-f06" secondAttribute="leading" constant="8" id="HCk-Gf-4Dw"/>
                                         <constraint firstItem="0vC-Mi-1Kk" firstAttribute="top" secondItem="PdM-Vg-80k" secondAttribute="bottom" constant="8" id="K9v-og-f8e"/>
@@ -214,7 +215,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
-                        <color key="backgroundColor" red="0.26577641542826469" green="0.061620838758806973" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.087862142738421689" green="0.66244654206049569" blue="0.73743990384615388" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
