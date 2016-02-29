@@ -163,7 +163,6 @@
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ytb-kl-jwq">
                                             <rect key="frame" x="11" y="7" width="54" height="58"/>
                                             <animations/>
-                                            <state key="normal" image="reply-action-pressed_0"/>
                                             <connections>
                                                 <segue destination="ZiL-rY-cPN" kind="push" identifier="profileViewSegue" id="CWM-J2-tuU"/>
                                             </connections>
