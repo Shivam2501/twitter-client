@@ -16,6 +16,10 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let logo = UIImage(named: "Twitter_logo_blue_32")
+        let imageView = UIImageView(image:logo)
+        navigationItem.titleView=imageView
+            
         tweetTable.dataSource = self
         tweetTable.delegate = self
         tweetTable.rowHeight = UITableViewAutomaticDimension
@@ -82,7 +86,6 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
             let scrollOffsetThreshold = scrollViewContentHeight - tweetTable.bounds.size.height
             
             if(scrollView.contentOffset.y > scrollOffsetThreshold && tweetTable.dragging) {
-                print("Scrolling Called")
                 isMoreDataLoading = true
                 loadMoreData()
             }
@@ -90,19 +93,53 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
+    @IBAction func replySegue(sender: AnyObject) {
+        let button = sender as! UIButton
+        let view = button.superview!
+        let cell = view.superview as! UITableViewCell
+        let indexPath = tweetTable.indexPathForCell(cell)
+        let tweet = tweets![indexPath!.row]
+        
+    }
+   
+    @IBAction func createSegue(sender: AnyObject) {
+        
+    }
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        let cell = sender as! UITableViewCell
-        let indexPath = tweetTable.indexPathForCell(cell)
-        let tweet = tweets![indexPath!.row]
-        
-        let tweetdetailviewcontroller = segue.destinationViewController as! TweetDetailViewController
-        tweetdetailviewcontroller.tweet = tweet
-      
+        if(segue.identifier == "TweetDetailSegue"){
+            let cell = sender as! UITableViewCell
+            let indexPath = tweetTable.indexPathForCell(cell)
+            let tweet = tweets![indexPath!.row]
+            let tweetdetailviewcontroller = segue.destinationViewController as! TweetDetailViewController
+            tweetdetailviewcontroller.tweet = tweet
+        }
+        if(segue.identifier == "replySegue"){
+            let button = sender as! UIButton
+            let view = button.superview!
+            let cell = view.superview as! UITableViewCell
+            let indexPath = tweetTable.indexPathForCell(cell)
+            let tweet = tweets![indexPath!.row]
+            let replyviewcontroller = segue.destinationViewController as! ReplyViewController
+            replyviewcontroller.tweet = tweet
+        }
+        if (segue.identifier == "createSegue"){
+            let replyviewcontroller = segue.destinationViewController as! ReplyViewController
+            replyviewcontroller.tweet = nil
+        }
+        if (segue.identifier == "profileViewSegue"){
+            let button = sender as! UIButton
+            let view = button.superview!
+            let cell = view.superview as! UITableViewCell
+            let indexPath = tweetTable.indexPathForCell(cell)
+            let tweet = tweets![indexPath!.row]
+            let profileviewcontroller = segue.destinationViewController as! ProfileViewController
+            profileviewcontroller.tweet = tweet
+        }
     }
     
 

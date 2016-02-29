@@ -19,9 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         if User.currentUser != nil {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewControllerWithIdentifier("TweetsNavigationController")
+            let vc = storyboard.instantiateViewControllerWithIdentifier("TweetsNavigation")
             window?.rootViewController = vc
-            
         }
         
         NSNotificationCenter.defaultCenter().addObserverForName(User.userDidLogoutNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (NSNotification) -> Void in

@@ -19,6 +19,7 @@ class TweetDetailViewController: UIViewController {
     @IBOutlet weak var favorites_count: UILabel!
     @IBOutlet weak var retweet_image: UIButton!
     @IBOutlet weak var favorite_image: UIButton!
+    @IBOutlet weak var backButton: UIBarButtonItem!
     
     var tweet: Tweet!
     var count_retweet: Int = 0
@@ -26,6 +27,8 @@ class TweetDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        backButton.title = " "
+        
         profileImage.setImageWithURL((tweet.user?.profileUrl)!)
         username.text = tweet.user?.name
         screenname.text = "@\(tweet.user!.screenname!)"

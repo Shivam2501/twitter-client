@@ -72,6 +72,17 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
+    func userTimeline(params: NSDictionary?, completion: (tweets: [Tweet]?, error: NSError?) -> ()) {
+        GET("1.1/statuses/user_timeline.json?screen_name=\(params!["screenname"]!)", parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
+            let dictionaries = response as! [NSDictionary]
+            
+            let tweets = Tweet.tweetsWithArray(dictionaries)
+            completion(tweets: tweets, error: nil)
+            }, failure: { (task: NSURLSessionDataTask?, error: NSError) -> Void in
+                completion(tweets: nil, error: error)
+        })
+    }
+    
     func homeTimeline(params: NSDictionary?, completion: (tweets: [Tweet]?, error: NSError?) -> ()) {
         GET("1.1/statuses/home_timeline.json", parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
                 let dictionaries = response as! [NSDictionary]
@@ -110,8 +121,22 @@ class TwitterClient: BDBOAuth1SessionManager {
     }
     
     func reply(params: NSDictionary?, completion: (tweet: Tweet?, error: NSError?) -> ()) {
-        print("1.1/statuses/update.json?status=\(params!["tweet"]!)&in_reply_to_status_id=\(params!["id"] as! Int).json")
+        
         POST("1.1/statuses/update.json?status=\(params!["tweet"]!)&in_reply_to_status_id=\(params!["id"] as! Int).json", parameters: params, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
+            
+            let tweet = Tweet.tweetAsDictionary(response as! NSDictionary)
+            completion(tweet: tweet, error: nil)
+            
+            }) { (operation: NSURLSessionDataTask?, error: NSError) -> Void in
+                print("ERROR: \(error)")
+                completion(tweet: nil, error: error)
+        }
+        
+    }
+    
+    func create(params: NSDictionary?, completion: (tweet: Tweet?, error: NSError?) -> ()) {
+        
+        POST("1.1/statuses/update.json?status=\(params!["tweet"]!)", parameters: params, success: { (operation: NSURLSessionDataTask, response: AnyObject?) -> Void in
             
             let tweet = Tweet.tweetAsDictionary(response as! NSDictionary)
             completion(tweet: tweet, error: nil)
