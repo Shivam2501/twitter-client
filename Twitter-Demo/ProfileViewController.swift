@@ -45,7 +45,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         
         tweetsTable.rowHeight = UITableViewAutomaticDimension
         tweetsTable.estimatedRowHeight = 120
-        
+   
         if (tweet == nil){
          TwitterClient.sharedInstance.currentAccount({ (user: User) -> () in
             
@@ -74,21 +74,22 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
                 print("Error fetching the user: \(error)")
             }
         }else{
-            self.backgroundImage.setImageWithURL(curr_user!.backgroundUrl!)
+      
+            self.backgroundImage.setImageWithURL((tweet?.user!.backgroundUrl!)!)
             
-            self.profileImage.setImageWithURL(curr_user!.profileUrl!)
+            self.profileImage.setImageWithURL((tweet?.user!.profileUrl!)!)
             self.profileImage.layer.cornerRadius = 3
             self.profileImage.clipsToBounds = true
             self.profileImage.layer.frame = CGRectInset(self.profileImage.layer.frame, 20, 20)
             self.profileImage.layer.borderColor = UIColor.whiteColor().CGColor
             self.profileImage.layer.borderWidth = 3.0
             
-            self.username.text = curr_user!.name
-            self.screenname.text = "@\(curr_user!.screenname!)"
-            self.descriptionUser.text = curr_user!.userDescription
-            self.location.text = curr_user!.location
-            self.followers.text = "\(curr_user!.follower!)"
-            self.following.text = "\(curr_user!.following!)"
+            self.username.text = (tweet?.user!.name!)!
+            self.screenname.text = "@\((tweet?.user!.screenname!)!)"
+            self.descriptionUser.text = (tweet?.user!.userDescription!)!
+            self.location.text = (tweet?.user!.location!)!
+            self.followers.text = "\((tweet?.user!.follower!)!)"
+            self.following.text = "\((tweet?.user!.following!)!)"
             
             TwitterClient.sharedInstance.userTimeline(["screenname": self.screenname.text!], completion: { (tweets, error) -> () in
                 self.tweets = tweets
