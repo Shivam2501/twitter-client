@@ -97,14 +97,27 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
             })
 
         }
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
+        tweetsTable.insertSubview(refreshControl, atIndex: 0)
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    func refreshControlAction(refreshControl: UIRefreshControl){
+        TwitterClient.sharedInstance.userTimeline(["screenname": self.screenname.text!], completion: { (tweets, error) -> () in
+            self.tweets = tweets
+            self.tweetsTable.reloadData()
+            refreshControl.endRefreshing()
+        })
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tweets != nil{
             return tweets!.count

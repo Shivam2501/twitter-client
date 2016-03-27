@@ -544,7 +544,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Mc-oP-shC">
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Mc-oP-shC">
                                         <rect key="frame" x="8" y="206" width="304" height="1"/>
                                         <animations/>
                                         <color key="backgroundColor" red="0.88118990379999995" green="0.88118990379999995" blue="0.88118990379999995" alpha="1" colorSpace="calibratedRGB"/>
